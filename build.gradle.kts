@@ -4,7 +4,7 @@ plugins {
 	`java-gradle-plugin`
 }
 
-group = "no.gpkg"
+group = "sh.tnn"
 version = System.getenv("VERSION") ?: "UNVERSIONED"
 repositories.mavenCentral()
 kotlin.jvmToolchain(17)
