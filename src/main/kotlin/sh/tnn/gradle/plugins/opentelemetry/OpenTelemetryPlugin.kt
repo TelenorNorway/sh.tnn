@@ -34,7 +34,7 @@ class OpenTelemetryPlugin : Plugin<Project> {
 			val nodeName = "local-spot-00000000-host000000"
 			it.extend(
 				"OTEL_RESOURCE_ATTRIBUTES_POD_NAME" to podName,
-				"OTEL_METRICS_EXPORTER" to "otlp",
+				"OTEL_METRICS_EXPORTER" to (DotEnvPlugin.get(project, "OTEL_METRICS_EXPORTER") ?: "otlp"),
 				"OTEL_RESOURCE_ATTRIBUTES" to mapOf(
 					"k8s.container.name" to resourceName,
 					"k8s.deployment.name" to resourceName,
