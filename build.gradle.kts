@@ -27,6 +27,7 @@ gradlePlugin {
 			displayName = "Telenor Next"
 			description = "Telenor Next Gradle Plugin"
 			implementationClass = "sh.tnn.gradle.TelenorNextPlugin"
+			tags = listOf("telenor", "next", "tnn", "dotenv", "github", "github-packages", "opentelemetry", "otel", "auto-instrumentation")
 		}
 	}
 }
