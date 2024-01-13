@@ -33,6 +33,7 @@ jobs:
         id: version
         uses: oss-actions/auto-version@v0
         with:
+          type: semver
           token: ${{ github.token }}
           refuse_major_increment: ${{ github.ref_name != 'main' }}
           increment: ${{ steps.parsed.outputs.increment }}
