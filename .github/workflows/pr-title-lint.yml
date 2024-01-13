@@ -1,0 +1,17 @@
+name: PR Title Lint
+on:
+  pull_request:
+    branches:
+      - main
+      - release/**
+    types: [ opened, edited, reopened ]
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: oss-actions/pr-title-lint@v0
+        with:
+          title: ${{ github.event.pull_request.title }}
+          summary: on
+          into: ${{ github.base_ref }}
