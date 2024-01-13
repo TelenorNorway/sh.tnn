@@ -45,7 +45,8 @@ class OpenTelemetryPlugin : Plugin<Project> {
 					"service.version" to "UNVERSIONED",
 				).map { e -> "${e.key}=${e.value}" }.joinToString(","),
 				"OTEL_PROPAGATORS" to "tracecontext,baggage",
-				"OTEL_EXPORTER_OTLP_ENDPOINT" to "http://localhost:4317",
+				"OTEL_EXPORTER_OTLP_ENDPOINT" to (DotEnvPlugin.get(project, "OTEL_EXPORTER_OTLP_ENDPOINT")
+					?: "http://localhost:4317"),
 				"OTEL_TRACES_SAMPLER" to "always_on",
 				"OTEL_SERVICE_NAME" to resourceName,
 				"OTEL_RESOURCE_ATTRIBUTES_NODE_NAME" to nodeName
