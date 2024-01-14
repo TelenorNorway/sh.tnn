@@ -3,6 +3,7 @@ package sh.tnn.gradle.plugins.opentelemetry
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.logging.Logging
+import org.gradle.process.JavaForkOptions
 import sh.tnn.gradle.plugins.dotenv.DotEnvPlugin
 import sh.tnn.gradle.plugins.java_environment.JavaEnvironmentPlugin
 
@@ -51,7 +52,12 @@ class OpenTelemetryPlugin : Plugin<Project> {
 				"OTEL_SERVICE_NAME" to resourceName,
 				"OTEL_RESOURCE_ATTRIBUTES_NODE_NAME" to nodeName
 			)
-			it.append("JAVA_TOOL_OPTIONS", " -javaagent:${openTelemetryJavaAgentFile.absolutePath}")
+		}
+		
+		project.tasks.all {
+			if (it is JavaForkOptions) {
+				it.jvmArgs("-XX:+EnableDynamicAgentLoading", "-javaagent:${openTelemetryJavaAgentFile.absolutePath}")
+			}
 		}
 	}
 }
