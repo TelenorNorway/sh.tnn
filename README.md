@@ -45,6 +45,7 @@ export GPR_TOKEN="<insert token here>"
 - [GitHub Repositories](#github-repositories)
   - [Maven Publish integration](#maven-publish-integration)
 - [Telenor Repositories](#telenor-repositories)
+- [Auto Exclude](#auto-exclude)
 
 ### Auto versioning
 
