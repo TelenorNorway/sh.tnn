@@ -179,3 +179,11 @@ organizations.
 
 `telenor.dcapi()` Will add the legacy DC API repository from
 Prima Nexus.
+
+### Auto Exclude
+
+This plugin will automatically exclude the following
+dependencies from all configurations:
+
+- `commons-logging:commons-logging`
+  unless `AUTO_EXCLUDE_KEEP` contains `commons-logging`

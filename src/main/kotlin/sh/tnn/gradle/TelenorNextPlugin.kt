@@ -2,6 +2,7 @@ package sh.tnn.gradle
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import sh.tnn.gradle.plugins.auto_exclude.AutoExcludePlugin
 import sh.tnn.gradle.plugins.auto_version.AutoVersionPlugin
 import sh.tnn.gradle.plugins.dotenv.DotEnvPlugin
 import sh.tnn.gradle.plugins.github.GitHubPlugin
@@ -18,6 +19,7 @@ class TelenorNextPlugin : Plugin<Project> {
 			GitHubPlugin::class,
 			TelenorPlugin::class,
 			OpenTelemetryPlugin::class,
+			AutoExcludePlugin::class,
 		).forEach {
 			project.pluginManager.apply(it.java)
 		}
