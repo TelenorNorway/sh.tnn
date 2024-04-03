@@ -13,13 +13,13 @@ import org.gradle.api.publish.plugins.PublishingPlugin
  */
 class GitHubPlugin : Plugin<Project> {
 	override fun apply(project: Project) {
-		installOn(project.repositories)
+		installOn(project, project.repositories)
 		project.plugins.withType(PublishingPlugin::class.java) {
-			installOn(project.extensions.getByType(PublishingExtension::class.java).repositories)
+			installOn(project, project.extensions.getByType(PublishingExtension::class.java).repositories)
 		}
 	}
 
-	private fun installOn(repos: RepositoryHandler) {
-		(repos as ExtensionAware).extensions.create("github", GitHub::class.java, repos)
+	private fun installOn(project: Project, repos: RepositoryHandler) {
+		(repos as ExtensionAware).extensions.create("github", GitHub::class.java, project, repos)
 	}
 }

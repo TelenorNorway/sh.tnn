@@ -32,6 +32,9 @@ You must add your GitHub username and personal access token
 to your environment variables. You must generate a classic
 personal access token with the `read:packages` scope.
 
+> [!IMPORTANT]
+> Don't commit this!
+
 ```bash
 export GPR_ACTOR="octocat"
 export GPR_TOKEN="<insert token here>"
