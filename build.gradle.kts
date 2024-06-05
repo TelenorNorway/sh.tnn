@@ -10,7 +10,6 @@ repositories.mavenCentral()
 kotlin.jvmToolchain(17)
 
 repositories {
-	gradlePluginPortal()
 	mavenCentral()
 }
 
@@ -28,6 +27,22 @@ gradlePlugin {
 			description = "Telenor Next Gradle Plugin"
 			implementationClass = "sh.tnn.gradle.TelenorNextPlugin"
 			tags = listOf("telenor", "next", "tnn", "dotenv", "github", "github-packages", "opentelemetry", "otel", "auto-instrumentation")
+		}
+	}
+}
+
+publishing {
+	repositories {
+		gradlePluginPortal()
+		if (System.getenv("GITHUB_ACTIONS") == "true") {
+			maven {
+				name = "GitHubPackages"
+				url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_REPOSITORY")}")
+				credentials {
+					username = System.getenv("GITHUB_ACTOR") ?: System.getenv("GPR_ACTOR") ?: System.getProperty("gpr.actor")
+					password = System.getenv("GITHUB_TOKEN") ?: System.getenv("GPR_TOKEN") ?: System.getProperty("gpr.token")
+				}
+			}
 		}
 	}
 }
