@@ -33,7 +33,6 @@ gradlePlugin {
 
 publishing {
 	repositories {
-		gradlePluginPortal()
 		if (System.getenv("GITHUB_ACTIONS") == "true") {
 			maven {
 				name = "GitHubPackages"
