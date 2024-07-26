@@ -11,7 +11,7 @@ plugin. It is not limited to Telenor employees.
 <!-- @formatter:off -->
 ```kts
 plugins {
-  id("sh.tnn") version "0.1.0"
+  id("sh.tnn") version "<version>"
 }
 ```
 <!-- @formatter:on -->
@@ -21,7 +21,7 @@ plugins {
 <!-- @formatter:off -->
 ```groovy
 plugins {
-  id 'sh.tnn' version '0.1.0'
+  id 'sh.tnn' version '<version>'
 }
 ```
 <!-- @formatter:on -->
