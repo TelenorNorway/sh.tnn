@@ -9,6 +9,9 @@ import org.gradle.api.Project
  */
 class AutoVersionPlugin : Plugin<Project> {
 	override fun apply(project: Project) {
+		if (project.version != "unspecified") {
+			return
+		}
 		project.version = System.getenv("VERSION") ?: "UNVERSIONED"
 	}
 }
